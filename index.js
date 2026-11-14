@@ -179,7 +179,7 @@ app.delete("/destination-booking/:id", verifyToken, async (req, res) => {
 });
 
 //fetch a single destination data from database
-app.get("/destinations/:id", async (req, res) => {
+app.get("/destinations/:id", verifyToken, async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -266,7 +266,7 @@ app.delete("/destinations/:id", verifyToken, async (req, res) => {
 });
 
 //fetch all destination data from database
-app.get("/destinations", async (req, res) => {
+app.get("/destinations", verifyToken, async (req, res) => {
   try {
     const destinations = await destinationsCollection.find().toArray();
     res.status(200).send(destinations);
