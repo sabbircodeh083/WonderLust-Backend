@@ -211,9 +211,7 @@ app.patch("/destinations/:id", verifyToken, async (req, res) => {
     const errors = destinationErrors(req.body, { partial: true });
 
     if (errors.length) {
-      return res
-        .status(400)
-        .json({ message: "Invalid destination", errors });
+      return res.status(400).json({ message: "Invalid destination", errors });
     }
 
     const { _id, ...updatedData } = req.body;
@@ -295,9 +293,7 @@ app.post("/destinations", verifyToken, async (req, res) => {
     const errors = destinationErrors(req.body);
 
     if (errors.length) {
-      return res
-        .status(400)
-        .json({ message: "Invalid destination", errors });
+      return res.status(400).json({ message: "Invalid destination", errors });
     }
 
     const { _id, ...destination } = req.body;
@@ -318,3 +314,5 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+export default app;
